@@ -3,7 +3,7 @@ import React from 'react';
 function Header(props) {
     function handleAddToDo(){
         props.setShowForm(true)
-        props.setEdit(false)
+        // props.setEdit(false)
     }
     return (
         <div className='fixed w-full p-4 bg-amber-500 flex justify-between items-center z-10'>

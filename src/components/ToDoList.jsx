@@ -3,24 +3,22 @@ import ToDoItem from './ToDoItem';
 // import AddToDo from './AddToDo';
 
 function ToDoList(props) {
-    const [todoData, setTodoData] = useState([])
-    let rawData = JSON.parse(localStorage.getItem('To-Do')) || [];
-    useEffect(()=>{
-        console.log(rawData)
-        setTodoData(rawData)
-    },[])
+    console.log('data from todolist data',props.todoData);
+    console.log('data from todolist id',props.id);
+    console.log('data from todolist edit',props.edit);
+    console.log('data from todolist setEdit',props.setEdit);
     
     return (
         <div className='relative h-screen'>
 
             {/* <AddToDo /> */}
             {
-                todoData.length? (
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative top-[100px] p-2 gap-2 mx-8'>
+                props.todoData.length? (
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 relative top-[100px] p-2 gap-2 md:gap-4'>
                         {
-                            todoData.map((e) => {
+                            props.todoData.map((e) => {
                                 return (
-                                    <ToDoItem key={e.id} id={e.id} tododata={e} setTododata={setTodoData} setEdit={props.setEdit} setShowForm={props.setShowForm} />
+                                    <ToDoItem key={e.id} id={e.id} setGetId={props.setGetId} tododata={e} setTododata={props.setTodoData} edit={props.edit} setEdit={props.setEdit}  />
                                 )
                             })
                         }
