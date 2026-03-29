@@ -9,3 +9,34 @@
     scrollbar-width: none;  
   }
 }
+.emptyList{
+  transition: all;
+  animation: EmptyList 2s ease-in;
+}
+@keyframes EmptyList{
+  0%{
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+
+  }
+}
+.addBtn{
+  animation: Addpulse 2s infinite ease-in-out;
+}
+@keyframes Addpulse{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 10px black;
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+  

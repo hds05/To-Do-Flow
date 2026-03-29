@@ -26,10 +26,10 @@ function ToDoList(props) {
                         }
                     </div>
                 ) : (
-                    <div className=' w-full flex flex-col justify-center items-center absolute top-0 bottom-0 left-0 right-0'>
-                        <div className='bg-white flex flex-col gap-3 z-50 p-4 rounded-2xl shadow-[0px_2px_10px_black] text-center text-gray-700 m-2'>
+                    <div className=' w-full bg-gray-700/80 flex flex-col justify-center items-center absolute top-0 bottom-0 left-0 right-0'>
+                        <div className='emptyList bg-white flex flex-col gap-3 z-50 p-4 rounded-2xl shadow-[0px_2px_10px_black] text-center text-gray-700 m-2'>
                             <h1 className=''>You haven't added anything in TO-DO list yet... 😅</h1>
-                            <button onClick={()=> {props.setShowForm(true)}} className='mt-4 bg-green-600 text-white p-2 rounded-2xl hover:bg-green-700 hover:shadow-[0pc_3px_5px_black] cursor-pointer transition-all duration-500 hover:scale-105'>Add</button>
+                            <button onClick={()=> {props.setShowForm(true)}} className='addBtn mt-4 bg-green-700 text-white p-2 rounded-2xl hover:bg-green-500 hover:shadow-[0pc_3px_5px_black] cursor-pointer transition-all duration-500'>Add</button>
                         </div>
                     </div>
                 )
