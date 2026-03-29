@@ -11,22 +11,26 @@ function App() {
   const [showForm, setShowForm] = useState(false)
   const [edit, setEdit] = useState(false)
   const [getid, setGetId] = useState('')
-  const [todoData, setTodoData] = useState('')
+  const [todoData, setTodoData] = useState([])
   // const [completed, setCompleted] = useState(false)
 
-    let Data = JSON.parse(localStorage.getItem('To-Do')) || [];
-    useEffect(()=>{
-        console.log('Data from App.jsx',Data)
-        setTodoData(Data)
-    },[])
-    
+  useEffect(() => {
+    try {
+      let Data = JSON.parse(localStorage.getItem('To-Do')) || [];
+      console.log('Data from App.jsx', Data)
+      setTodoData(Data)
+    } catch {
+      setTodoData([]);
+    }
+  }, [])
+
   return (
-    <div className="bg-[url('https://png.pngtree.com/background/20250207/original/pngtree-soft-pastel-floral-design-light-blue-background-picture-image_16257054.jpg')] h-screen bg-cover w-full overflow-scroll">
+    <div className="bg-[url('BG.jpg')] h-screen bg-cover w-full overflow-scroll">
       <Header setShowForm={setShowForm} />
-      <ToDoList todoData={todoData} setGetId={setGetId} setTodoData={setTodoData} setShowForm={setShowForm} edit={edit} setEdit={setEdit} />
+      <ToDoList todoData={todoData} setGetId={setGetId} setTodoData={setTodoData} setShowForm={setShowForm} setEdit={setEdit} />
       {
-        (showForm && <AddToDo setTodoData={setTodoData} setShowForm={setShowForm} />) ||
-        (edit && <EditToDo getid={getid} setTodoData={setTodoData} setEdit={setEdit} />)
+        (showForm && <AddToDo todoData={todoData} setTodoData={setTodoData} setShowForm={setShowForm} />) ||
+        (edit && <EditToDo getid={getid} todoData={todoData} setTodoData={setTodoData} setEdit={setEdit} />)
       }
     </div>
   )

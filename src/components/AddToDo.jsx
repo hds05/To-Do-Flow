@@ -7,7 +7,7 @@ function AddToDo(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        let rawData = JSON.parse(localStorage.getItem('To-Do')) || []
+        // let rawData = JSON.parse(localStorage.getItem('To-Do')) || []
         let entry = {
             id: Date.now(),
             title: enteredTitle,
@@ -15,11 +15,12 @@ function AddToDo(props) {
             completed: false
         }
         // setEntryId(entryId + 1)
-        const data = [...rawData, entry]
+        const data = [...props.todoData, entry]
         props.setTodoData(data)
         localStorage.setItem('To-Do', JSON.stringify(data))
         setEnteredTitle('');
         setEnteredDescription('');
+        props.setShowForm(false)
     }
     function handleCloseForm() {
         props.setShowForm(false)
@@ -35,7 +36,10 @@ function AddToDo(props) {
             {/* <div className='relative'> */}
             <div>
                 <form onSubmit={handleSubmit} action="" className='p-4 bg-white rounded-xl flex flex-col w-[300px] md:w-[500px] h-fit '>
-                    <h1 className='text-center text-4xl'>Add To-Do</h1>
+                    <h1 className='text-center text-xl font-mono underline md:text-4xl mb-2'>Add To-Do</h1>
+                    <div className='flex justify-center'>
+                        <img src="./clippy-put.gif" width={'150'} alt="" />
+                    </div>
                     <label htmlFor="">Title:-</label>
                     <input type="text" required={true} value={enteredTitle} onChange={(e) => setEnteredTitle(e.target.value)} className='shadow-[0px_0px_2px_black] p-1' />
                     <label htmlFor="">Description:-</label>
@@ -45,7 +49,7 @@ function AddToDo(props) {
                         (
                             <button onClick={props.handleEdit} className='m-4 bg-blue-700 p-2 transition-all duration-700 rounded-2xl text-white cursor-pointer hover:shadow-[0px_3px_10px_black] hover:scale-[1.05] hover:bg-blue-500'>Edit</button>
                         ) : ( */}
-                        <button type='submit' className='m-4 bg-green-700 p-2 transition-all duration-700 rounded-2xl text-white cursor-pointer hover:shadow-[0px_3px_10px_black] hover:scale-[1.05] hover:bg-green-500'>Add</button>
+                    <button type='submit' className='mt-4 bg-green-700 p-2 transition-all duration-700 rounded-2xl text-white cursor-pointer hover:shadow-[0px_3px_10px_black] hover:scale-[1.05] hover:bg-green-500'>Add</button>
                     {/* // )
                     } */}
                 </form>
